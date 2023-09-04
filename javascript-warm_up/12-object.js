@@ -5,5 +5,5 @@ const myObject = {
     value: 12
   };
   console.log(myObject);
-  myObject = 89
+  value = 89
   console.log(myObject);
