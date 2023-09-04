@@ -7,5 +7,6 @@ const myObject = {
 console.log(myObject);
 value.myObject = {
     type: 'object',
-    value: 89}
+    value: 89
+};
 console.log(value.myObject);
