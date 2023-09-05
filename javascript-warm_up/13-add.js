@@ -1,7 +1,4 @@
 #!/usr/bin/node
 // adding two integers
-globalThis.add = function(a, b) {
-    return a + b;
-  };
-const result = add(a, b);
-console.log(result);
+const add = require('./13-add').add;
+console.log(add(3, 5));
