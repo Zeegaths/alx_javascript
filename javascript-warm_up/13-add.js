@@ -1,4 +1,7 @@
 #!/usr/bin/node
 // adding two integers
-const add = require('./13-add').add;
-console.log(add(3, 5));
+// Define the add function in the global scope
+globalThis.add = function(a, b) {
+    return a + b;
+  };
+  
