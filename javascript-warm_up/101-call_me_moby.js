@@ -1,5 +1,7 @@
 
 // excecutes x times a fnction
 function callMeMoby(x, theFunction) {
-    return x * theFunction();
-}
+    for (let i = 0; i < x; i++) {
+      theFunction();
+    }
+  }
