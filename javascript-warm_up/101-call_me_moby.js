@@ -1,6 +1,8 @@
 // excecutes x times a fnction
-(function callMeMoby() {
+function callMeMoby(x, theFunction) {
     for (let i = 0; i < x; i++) {
-    console.log(i)
+        theFunction();
     }
-})()
+}
+
+module.exports = { callMeMoby };
