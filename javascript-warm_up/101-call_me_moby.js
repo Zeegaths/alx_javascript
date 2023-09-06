@@ -1,5 +1,6 @@
 // excecutes x times a fnction
-const callMeMoby = (x * callMeMoby);
-    for (let i = 0; i < x; i++) {
-    callMeMoby();
-}
+(function callMeMoby() {
+    for (var i = 0; i < x; i++) {
+    console.log(i)
+    }
+})()
