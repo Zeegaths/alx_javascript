@@ -1,6 +1,4 @@
-
 // excecutes x times a fnction
-function callMeMoby() {
-    const callMeMoby = document.getElementById("callMeMoby").value;
-    console.log(callMeMoby * x);
-  }
+callMeMoby(3, function () {
+    console.log('C is fun');
+  });
