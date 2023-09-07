@@ -4,7 +4,7 @@ function addMeMaybe(number, theFunction) {
     theFunction(incrementedNumber);
 }
 function incr(number) {
-    return number + 1;    
-}
-console.log(number)
+    return number + 1
+};
+console.log(number);
 module.exports = { addMeMaybe, incr };
