@@ -1,14 +1,13 @@
 // the function increments and calls a function
 const myObject = {
     type: 'object',
-    value: 12
-  };  
+    value: 12,
+    incr: function() {
+      this.value++;
+    }
+  };
   
-  function incr() {
-    myObject.value++;    
-  }
-   console.log(myObject);
-
-   incr(myObject);
-   
-   console.log(myObject);
+  console.log(myObject);
+  myObject.incr();
+  console.log(myObject);
+  
