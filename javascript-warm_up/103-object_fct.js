@@ -1,8 +1,12 @@
-// the function increments and calls a function
 function addMeMaybe(number, theFunction) {
     const incrementedNumber = number + 1;
-    theFunction(incrementedNumber);
+    const result = {
+        value: incrementedNumber,
+        incr: incr
+    };
+    theFunction(result);
 }
+
 function incr(number) {
     return number + 1;
 }
