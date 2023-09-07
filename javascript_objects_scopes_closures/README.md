@@ -1,0 +1,1 @@
+Javascript variable scopes, closure, prototypes
