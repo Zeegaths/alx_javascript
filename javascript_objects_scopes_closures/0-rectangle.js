@@ -1,5 +1,5 @@
 // This class defines a rectangle
-class Rectangle {
-    
-}
+const Rectangle = class newRectangle {
+
+};
   
