@@ -1,12 +1,14 @@
 // the function increments and calls a function
-function addMeMaybe(number, theFunction) {
-    const incrementedNumber = number + 1;
-    theFunction(incrementedNumber);
-}
+const myObject = {
+    type: 'object',
+    value: 12
+  };  
+  
+  function incr() {
+    myObject.value++;    
+  }
+   console.log(myObject);
 
-function incr(number) {
-    return number + 1;
-}
-module.exports = { addMeMaybe, incr };
-
-
+   incr(myObject);
+   
+   console.log(myObject);
