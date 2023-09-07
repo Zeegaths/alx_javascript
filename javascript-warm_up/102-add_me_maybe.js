@@ -6,3 +6,4 @@ window.incrementAndCall = function (number, theFunction) {
     // Call the provided function with the incremented number as an argument
     theFunction(number);
 };
+module.exports = { theFunction };
