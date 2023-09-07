@@ -1,9 +1,6 @@
 // the function increments and calls a function
-window.incrementAndCall = function (number, theFunction) {
-    // Increment the number
-    number++;
-
-    // Call the provided function with the incremented number as an argument
-    theFunction(number);
-};
-module.exports = { theFunction };
+function addMeMaybe (number, theFunction){
+    return number++; 
+    addMeMaybe(theFunction);
+}
+module.exports = {addMeMaybe};
