@@ -7,5 +7,6 @@ function addMeMaybe(number, theFunction) {
 function incr(number) {
     return number + 1;
 }
+module.exports = { addMeMaybe, incr };
 
 
