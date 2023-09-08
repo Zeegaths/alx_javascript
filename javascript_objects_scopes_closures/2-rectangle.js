@@ -1,3 +1,4 @@
+#!/usr/bin/node
 // This class defines a rectangle
 const Rectangle = class {
     constructor(w, h) {
