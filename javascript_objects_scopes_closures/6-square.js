@@ -1,8 +1,9 @@
 #!/usr/bin/node
 // Creates a square
-class Square extends require('./5-square') {
-    charPrint(c = 'X') {
-        if (typeof c === undefined || c.length !== 1) {
+const Square = require('./5-square');
+class Square extends Square {
+    charPrint(c) {
+        if (c === undefined) {
             c = "X";
         }
         for (let i = 0; i < this.height; i++) {
