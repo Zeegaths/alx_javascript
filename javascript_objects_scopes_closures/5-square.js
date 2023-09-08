@@ -1,6 +1,7 @@
 #!/usr/bin/node
 // constructor size with super method
-const Square1 = require ('./4-rectangle');
+const Rectangle = require('./4-rectangle');
+
 class Square extends Rectangle {
     constructor(size) {
       // Call the constructor of the Rectangle class using super()
