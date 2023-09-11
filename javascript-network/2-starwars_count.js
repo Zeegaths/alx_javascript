@@ -18,12 +18,14 @@ request.get(apiUrl, { json: true }, (error, response, body) => {
         console.error('Error:', response.statusCode, body.detail);
         process.exit(1);
     }
-    console.log('API Response:', body);
     const characterId = 18; // Wedge Antilles' character ID
     const moviesWithCharacter = body.results.filter(movie =>
-        movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
+        movie.characters.some(characterUrl =>
+            characterUrl === `https://swapi-api.alx-tools.com/api/people/${characterId}/`
+        )
     );
 
     console.log(`${moviesWithCharacter.length}`);
+
 });
 
