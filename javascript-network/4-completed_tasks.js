@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+const apiUrl = process.argv[2];
 
 request.get(apiUrl, { json: true }, (error, response, todos) => {
     if (error) {
@@ -29,8 +29,6 @@ request.get(apiUrl, { json: true }, (error, response, todos) => {
         }
     });
 
-    // Print user IDs and the number of tasks completed by each user
-    for (const userId in userTasksCount) {
-        console.log(`User ID ${userId}: ${userTasksCount[userId]}`);
-    }
+    // Print the results as specified
+    console.log(userTasksCount);
 });
