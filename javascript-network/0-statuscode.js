@@ -3,7 +3,10 @@
 const req = require('request');
 const url = `https://intranet.alxswe.com/status`;
 
-req.get(url, { encoding: 'utf-8' })    
+req.get(url, { encoding: 'utf-8' })
     .on('response', response => {
         console.log('code:', response.statusCode);
+    })
+    .on('error', err => {
+        console.log(err);
     });
