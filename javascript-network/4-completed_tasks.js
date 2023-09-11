@@ -1,10 +1,9 @@
 #!/usr/bin/node
-// prints the number of completed tasks by user id
 const request = require('request');
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
-request.get(apiUrl, { json: true }, (error, response, body) => {
+request.get(apiUrl, { json: true }, (error, response, todos) => {
     if (error) {
         console.error('Error:', error);
         process.exit(1);
@@ -15,24 +14,21 @@ request.get(apiUrl, { json: true }, (error, response, body) => {
         process.exit(1);
     }
 
-    // Create a map to store the count of completed tasks for each user ID
-    const completedTasksByUser = new Map();
+    // Filter the todos to select only completed tasks
+    const completedTodos = todos.filter(todo => todo.completed);
 
-    // Filter tasks that are completed (completed = true)
-    const completedTasks = body.filter(task => task.completed);
-
-    // Count completed tasks for each user
-    completedTasks.forEach(task => {
-        const userId = task.userId;
-        if (completedTasksByUser.has(userId)) {
-            completedTasksByUser.set(userId, completedTasksByUser.get(userId) + 1);
+    // Group the completed tasks by user ID and count the tasks for each user
+    const userTasksCount = {};
+    completedTodos.forEach(todo => {
+        if (userTasksCount[todo.userId]) {
+            userTasksCount[todo.userId]++;
         } else {
-            completedTasksByUser.set(userId, 1);
+            userTasksCount[todo.userId] = 1;
         }
     });
 
-    // Print the number of completed tasks for each user
-    completedTasksByUser.forEach((count, userId) => {
-        console.log(`User ID ${userId}: ${count} completed tasks`);
-    });
+    // Print the user IDs and the number of completed tasks for each user
+    for (const userId in userTasksCount) {
+        console.log(`User ID ${userId}: ${userTasksCount[userId]} completed tasks`);
+    }
 });
