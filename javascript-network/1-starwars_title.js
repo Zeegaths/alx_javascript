@@ -16,6 +16,6 @@ request.get(url, function (error, response, body) {
     }
 
     const responseData = JSON.parse(body);
-    console.log('Title:', responseData.title);
+    console.log(responseData.title);
 });
 
