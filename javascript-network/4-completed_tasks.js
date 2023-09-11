@@ -27,7 +27,7 @@ request.get(apiUrl, { json: true }, (error, response, todos) => {
         }
     });
 
-    // Print the user IDs and the number of completed tasks for each user
+    // Print user IDs and the number of tasks completed by each user
     for (const userId in userTasksCount) {
         console.log(`User ID ${userId}: ${userTasksCount[userId]} completed tasks`);
     }
