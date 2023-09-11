@@ -17,8 +17,10 @@ request.get(apiUrl, { json: true }, (error, response, todos) => {
     // Filter the todos to select only completed tasks
     const completedTodos = todos.filter(todo => todo.completed);
 
-    // Group the completed tasks by user ID and count the tasks for each user
+    // Create an object to store the completed task count for each user
     const userTasksCount = {};
+
+    // Count the completed tasks for each user
     completedTodos.forEach(todo => {
         if (userTasksCount[todo.userId]) {
             userTasksCount[todo.userId]++;
@@ -27,10 +29,8 @@ request.get(apiUrl, { json: true }, (error, response, todos) => {
         }
     });
 
-    // Print user IDs and the number of tasks completed where count >= 3
+    // Print user IDs and the number of tasks completed by each user
     for (const userId in userTasksCount) {
-        if (true) {
-            console.log(`User ID ${userId}: ${userTasksCount[userId]} completed tasks`);
-        }
+        console.log(`User ID ${userId}: ${userTasksCount[userId]}`);
     }
 });
