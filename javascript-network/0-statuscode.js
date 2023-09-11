@@ -1,7 +1,7 @@
 #!/usr/bin/node
 // displays the status codode of a GET request
 const req = require('request');
-const url = `https://intranet.alxswe.com/status`;
+const url = process.argv[2];
 
 req.get(url, { encoding: 'utf-8' }, (error, response, body) => {
     if (error) {
