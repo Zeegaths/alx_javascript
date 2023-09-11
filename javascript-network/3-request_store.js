@@ -4,4 +4,4 @@ const request = require('request');
 const fs = require('fs');
 const apiUrl = process.argv[2];
 
-request.get(url).pipe(fs.createWriteStream('responnse.json'));
+request.get(apiUrl).pipe(fs.createWriteStream('responnse.json'));
