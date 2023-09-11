@@ -33,8 +33,7 @@ request.get(url, { encoding: 'utf-8' }, (error, response, body) => {
                 console.error('Error reading from file:', readError);
                 process.exit(1);
             }
-
-            console.log(fileContent);
+   
         });
     });
 });
