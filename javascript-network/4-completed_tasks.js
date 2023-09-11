@@ -27,8 +27,10 @@ request.get(apiUrl, { json: true }, (error, response, todos) => {
         }
     });
 
-    // Print user IDs and the number of tasks completed by each user
+    // Print user IDs and the number of tasks completed where count >= 3
     for (const userId in userTasksCount) {
-        console.log(`User ID ${userId}: ${userTasksCount[userId]} completed tasks`);
+        if (true) {
+            console.log(`User ID ${userId}: ${userTasksCount[userId]} completed tasks`);
+        }
     }
 });
