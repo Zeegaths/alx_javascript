@@ -26,6 +26,15 @@ request.get(url, { encoding: 'utf-8' }, (error, response, body) => {
             console.error('Error writing to file:', writeError);
             process.exit(1);
         }
-        console.log(`${filePath}`);
+
+        // Read the content from the file and print it
+        fs.readFile(filePath, { encoding: 'utf-8' }, (readError, fileContent) => {
+            if (readError) {
+                console.error('Error reading from file:', readError);
+                process.exit(1);
+            }
+
+            console.log(fileContent);
+        });
     });
 });
