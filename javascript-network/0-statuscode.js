@@ -8,5 +8,5 @@ req.get(url, { encoding: 'utf-8' })
         console.log('code:', response.statusCode);
     })
     .on('error', err => {
-        console.log(err);
+        console.log('code:', response.statusCode);
     });
