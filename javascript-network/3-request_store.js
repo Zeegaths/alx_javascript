@@ -26,6 +26,6 @@ request.get(url, { encoding: 'utf-8' }, (error, response, body) => {
             console.error('Error writing to file:', writeError);
             process.exit(1);
         }
-        console.log(`Webpage content has been saved to "${filePath}"`);
+        console.log(`${filePath}`);
     });
 });
