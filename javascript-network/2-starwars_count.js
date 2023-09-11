@@ -1,8 +1,12 @@
 #!/usr/bin/node
 // prints movies where " Star wars Wedge Antilles" is present.
 const request = require('request');
-
 const apiUrl = process.argv[2];
+
+if (process.argv.length !== 3) {
+    console.log('Usage: node countMoviesWithCharacter.js <API URL>');
+    process.exit(1);
+}
 
 request.get(apiUrl, { json: true }, (error, response, body) => {
     if (error) {
