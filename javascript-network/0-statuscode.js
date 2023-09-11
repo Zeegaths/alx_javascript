@@ -8,5 +8,5 @@ req.get(url, { encoding: 'utf-8' })
         console.log(data);
     })
     .on('response', response => {
-        console.log('Status code ;', response.statusCode);
+        console.log('code:', response.statusCode);
     })
