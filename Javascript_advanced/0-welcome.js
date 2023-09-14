@@ -6,8 +6,8 @@ function welcome(firstName, LastName) {
 
     let fullName = this.firstName + this.lastName
 
-    displayFullName() {
-        alert("Welcome :" + fullName);
+    function displayFullName() {
+        alert("Welcome:" + " " + fullName);
     }
 }
 displayFullName();
