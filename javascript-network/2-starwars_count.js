@@ -21,7 +21,7 @@ request.get(apiUrl, { json: true }, (error, response, body) => {
     const characterId = 18; // Wedge Antilles' character ID
     const moviesWithCharacter = body.results.filter(movie =>
         movie.characters.some(characterUrl =>
-            characterUrl === `https://swapi.co/api/people/${characterId}/`
+            characterUrl === `http://swapi.co/api/people/${characterId}/`
         )
     );
 
