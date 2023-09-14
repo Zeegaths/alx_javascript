@@ -1,0 +1,1 @@
+lexical scoping, closure, callstack, binding, callback
