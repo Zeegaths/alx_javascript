@@ -1,0 +1,82 @@
+<!--creating a basic cookie-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<,, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" placeholder="first name"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Email"><br><br>
+
+
+        <button id="setCookies"> log me in</button>
+        <button id="showCookies">Show the cookies</button>
+    </div>
+    <script>
+        // This function sets the value of the first name and email
+        function setCookies() {
+            const firstnameInput = document.getElementById('firstname');
+            const emailInput = document.getElementById('email');
+
+            const firstnameValue = firstnameInput.value;
+            const emailValue = emailInput.value;
+
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 10);
+
+            const expires = expirationDate.toUTCString();
+
+            document.cookie = `firstname=${encodeURIComponent(firstnameValue)}; expires=${expires}; path=/`;
+            document.cookie = `email=${encodeURIComponent(emailValue)};expires=${expires}; path=/`;
+        }
+        // Creates a DOM element
+        function showCookies() {
+  const cookies = document.cookie;
+  const cookiesInfo = document.createElement('p');
+
+  let emailValue = '';
+  let firstnameValue = '';
+
+  // Split and parse the cookies to extract the values
+  const cookieArray = cookies.split(';');
+  for (const cookie of cookieArray) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === 'email') {
+      emailValue = decodeURIComponent(value || '');
+    } else if (name === 'firstname') {
+      firstnameValue = decodeURIComponent(value || '');
+    }
+  }
+
+  // Set the inner HTML of the <p> element with the cookies
+  cookiesInfo.innerHTML = `Email: ${emailValue} - Firstname: ${firstnameValue}`;
+
+  // Append the <p> element to the bottom of the page
+  document.body.appendChild(cookiesInfo);
+}
+
+
+        //
+        function getCookie(name) {
+            const [cookieName, cookieValue] = cookie.trim().split('=');
+            if (cookieName === name) {
+                return decodeURIComponent(cookieValue || '');
+            }
+        }
+
+        // Return an empty string if the cookie with the given name is not found
+        return '';
+      
+
+
+    </script>
+</body>
+
+</html>

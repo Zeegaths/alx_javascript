@@ -1,0 +1,43 @@
+<!--creating a basic cookie-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<,, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" placeholder="first name"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Email"><br><br>
+       
+
+        <button id = "setCookies"> log me in</button>
+        <button id = "showCookies">Show the cookies</button>
+    </div>
+    <script>
+    // This function sets the value of the first name and email
+        function setCookies() {
+            const firstnameInput = document.getElementById('firstname');
+            const emailInput = document.getElementById('email');
+
+            const firstnameValue = firstnameInput.value;
+            const emailValue = emailInput.value;
+
+            document.cookie = `firstname=${encodeURIComponent(firstnameValue)}; path=/`;
+            document.cookie = `email=${encodeURIComponent(emailValue)}; path=/`;
+        }
+        // Creates a DOM element
+        function showCookies() {
+            const newparagraph = document.createElement('p');
+            newparagraph.innerHTML = `cookies: ${cookieValue || 'Cookie not found'}`;
+            document.body.appendChild(newParagraph);
+        }
+        document.getElementById('setCookies').addEventListener('click', setCookies);
+        document.getElementById('showCookies').addEventListener('click', showCookies);
+    </script>
+</body>
+
+</html>
