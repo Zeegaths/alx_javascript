@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- js-cookie library using CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+</head>
+
+<body>
+    <div id="loginForm">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" placeholder="first name"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Email"><br><br>
+        <button id="setCookies"> log me in</button>
+        <button id="showCookies">Show the cookies</button>
+    </div>
+    <script>
+        // Function to set cookies using js-cookie and show the welcome message or form
+        function setCookiesAndShowWelcomeMessage() {
+            const firstnameInput = document.getElementById('firstname');
+            const emailInput = document.getElementById('email');
+
+            const firstnameValue = firstnameInput.value;
+            const emailValue = emailInput.value;
+
+            // Set cookies using js-cookie
+            Cookies.set('firstname', firstnameValue, { expires: 10, path: '/' });
+            Cookies.set('email', emailValue, { expires: 10, path: '/' });
+
+            // Call the function to show welcome message or form
+            showWelcomeMessageOrForm();
+        }
+
+        // Function to show cookies using js-cookie
+        function showCookies() {
+            const emailValue = Cookies.get('email') || '';
+            const firstnameValue = Cookies.get('firstname') || '';
+
+            const cookiesInfo = document.createElement('p');
+            cookiesInfo.textContent = `Email: ${emailValue} - Firstname: ${firstnameValue}`;
+
+            document.body.appendChild(cookiesInfo);
+        }
+
+        // Function to show the form
+        function showForm() {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
+
+            const form = document.getElementById('myForm');
+            if (form) {
+                form.style.display = 'block';
+            }
+        }
+
+        // Function to hide the form
+        function hideForm() {
+            const form = document.getElementById('myForm');
+            if (form) {
+                form.style.display = 'none';
+            }
+        }
+
+        // Function to delete cookies using js-cookie and show the form
+        function deleteCookiesAndShowForm() {
+            // Remove cookies using js-cookie
+            Cookies.remove('firstname', { path: '/' });
+            Cookies.remove('email', { path: '/' });
+
+            // Show the form
+            showForm();
+        }
+
+        // Function to show welcome message or form
+        function showWelcomeMessageOrForm() {
+            const isLoggedIn = Cookies.get('firstname');
+
+            if (isLoggedIn) {
+                const body = document.body;
+                body.innerHTML = '';
+
+                const welcomeMessage = document.createElement('h1');
+                const firstname = Cookies.get('firstname');
+
+                // The welcome message
+                welcomeMessage.innerHTML = `Welcome ${firstname} <a href="#" id="logoutLink">(logout)</a>`;
+                welcomeMessage.style.fontStyle = 'italic';
+
+                const logoutLink = welcomeMessage.querySelector('#logoutLink');
+                logoutLink.style.marginLeft = '10px';
+                logoutLink.addEventListener('click', function () {
+                    deleteCookiesAndShowForm();
+                    body.removeChild(welcomeMessage);
+                });
+                body.appendChild(welcomeMessage);
+            } else {
+                showForm();
+            }
+        }
+        
+        // Event listeners for buttons
+        document.getElementById('setCookies').addEventListener('click', setCookiesAndShowWelcomeMessage);
+        document.getElementById('showCookies').addEventListener('click', showCookies);
+
+        // Initial call to show either the welcome message or form based on cookies
+        showWelcomeMessageOrForm();
+    </script>
+</body>
+
+</html>
