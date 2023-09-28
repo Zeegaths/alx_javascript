@@ -9,13 +9,11 @@
 </head>
 
 <body>
-    <div>
+    <div id = "loginForm">
         <label for="firstname">First Name:</label>
         <input type="text" id="firstname" placeholder="first name"><br><br>
         <label for="email">Email:</label>
         <input type="text" id="email" placeholder="Email"><br><br>
-
-
         <button id="setCookies"> log me in</button>
         <button id="showCookies">Show the cookies</button>
     </div>
@@ -73,6 +71,44 @@
 
         // Return an empty string if the cookie with the given name is not found
         return '';
+
+        function showForm() {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
+
+            const form = document.getElementByID('myForm');
+            if (form) {
+                form.style.display = 'block';
+            }
+        }
+        function hideForm() {
+            const form = document.getElementByID('myForm');
+            if (form) {
+                form.style.display = 'none';
+        }
+        function deleteCookiesAndShowForm() {
+            document.cookie = 'firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+            document.cookie = 'email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+
+            // Show the form
+            showForm();
+        }
+        function showWelcomeMessageOrForm() {
+            const cookies = document.cookie;
+            const isLoggedIn = cookies.includes('firstname');
+            
+            if (isloggedIn) {
+                const body = document.body;
+                body.innerHTML = '';
+
+                const welcomeMessage = document.createElement(h1);
+                const firstname = getcookie('firstname');
+                
+
+            }
+        }
 
 
 
