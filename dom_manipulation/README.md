@@ -1,0 +1,1 @@
+playing with DOM, Selecting HTML Elements using selectors, Modifying Element Cntent, Atributes and Styles, creating, appending and removing elements. 
