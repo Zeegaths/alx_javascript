@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var nameInput = document.getElementById("name");
     var emailInput = document.getElementById("email");
     var errorElement = document.getElementById("error");
+    var successElement = document.getElementById("success");
 
-    form.addEventListener("submit", function (event) {
+    // Function to handle form submission
+    function handleFormSubmit(event) {
         // Prevent default form submission
         event.preventDefault();
 
@@ -28,17 +30,18 @@ document.addEventListener("DOMContentLoaded", function () {
             displaySuccessMessage("Form submitted successfully!");
             form.reset(); // Clear form fields if needed
         }
-    });
+    }
 
     // Function to display error message
     function displayErrorMessage(message) {
         errorElement.textContent = message;
+        successElement.textContent = ""; // Clear the success message
     }
 
     // Function to display success message
     function displaySuccessMessage(message) {
-        errorElement.textContent = message;
-        errorElement.style.color = "green";
+        successElement.textContent = message;
+        errorElement.textContent = ""; // Clear the error message
     }
 
     // Function to validate email using a regex pattern
@@ -46,4 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
         return emailPattern.test(email);
     }
+
+    // Add an event listener to the form to call handleFormSubmit on form submission
+    form.addEventListener("submit", handleFormSubmit);
 });
