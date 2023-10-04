@@ -6,6 +6,19 @@ document.addEventListener("DOMContentLoaded", function () {
     passwordForm.addEventListener("submit", function (event) {
         var password = passwordInput.value;
 
+        // Call the validatePassword function to check password strength
+        var isPasswordValid = validatePassword(password);
+
+        if (!isPasswordValid) {
+            errorElement.innerHTML = "Error! Password must meet all criteria: at least 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character.";
+            event.preventDefault(); // Prevent form submission
+        } else {
+            errorElement.innerHTML = ''; // Clear the error message if the password is valid
+        }
+    });
+
+    // Function to validate password strength
+    function validatePassword(password) {
         // Password criteria regex patterns
         var lengthPattern = /.{8,}/;
         var uppercasePattern = /[A-Z]/;
@@ -21,14 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
         var isSpecialCharValid = specialCharPattern.test(password);
 
         // Combine the results
-        var isPasswordValid = isLengthValid && isUppercaseValid && isLowercaseValid && isDigitValid && isSpecialCharValid;
-
-        if (!isPasswordValid) {
-            errorElement.innerHTML = "Error! Password must meet all criteria: at least 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character.";
-            event.preventDefault(); // Prevent form submission
-            return false; // Return false to prevent form submission
-        } else {
-            errorElement.innerHTML = ''; // Clear the error message if the password is valid
-        }
-    });
+        return isLengthValid && isUppercaseValid && isLowercaseValid && isDigitValid && isSpecialCharValid;
+    }
 });
