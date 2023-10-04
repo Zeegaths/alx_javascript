@@ -3,13 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
     var emailInput = document.getElementById("email");
     var errorElement = document.getElementById("error");
 
+    // Function to validate email format
+    function validateEmail(email) {
+        var emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+        return emailPattern.test(email);
+    }
+
     emailForm.addEventListener("submit", function (event) {
         var email = emailInput.value;
 
-        // Email format regex pattern
-        var emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-
-        if (!emailPattern.test(email)) {
+        if (!validateEmail(email)) {
             errorElement.innerHTML = "Please enter a valid email address.";
             event.preventDefault(); // Prevent form submission
         } else {
