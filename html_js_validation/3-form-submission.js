@@ -1,0 +1,49 @@
+document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("submitForm");
+    var nameInput = document.getElementById("name");
+    var emailInput = document.getElementById("email");
+    var errorElement = document.getElementById("error");
+
+    form.addEventListener("submit", function (event) {
+        // Prevent default form submission
+        event.preventDefault();
+
+        // Retrieve form field values
+        var name = nameInput.value.trim();
+        var email = emailInput.value.trim();
+
+        // Validate form fields
+        var isValid = true;
+
+        if (name === "" || email === "") {
+            displayErrorMessage("Please fill in all required fields.");
+            isValid = false;
+        } else if (!isValidEmail(email)) {
+            displayErrorMessage("Please enter a valid email address.");
+            isValid = false;
+        }
+
+        // If all validations pass, display success message
+        if (isValid) {
+            displaySuccessMessage("Form submitted successfully!");
+            form.reset(); // Clear form fields if needed
+        }
+    });
+
+    // Function to display error message
+    function displayErrorMessage(message) {
+        errorElement.textContent = message;
+    }
+
+    // Function to display success message
+    function displaySuccessMessage(message) {
+        errorElement.textContent = message;
+        errorElement.style.color = "green";
+    }
+
+    // Function to validate email using a regex pattern
+    function isValidEmail(email) {
+        var emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+        return emailPattern.test(email);
+    }
+});
