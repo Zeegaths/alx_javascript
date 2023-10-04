@@ -1,0 +1,1 @@
+html form :password validation, email validation, dynamic form field, form submission handling
