@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var dynamicForm = document.getElementById("dynamicForm");
     var numFieldsSelect = document.getElementById("numFields");
     var inputContainer = document.getElementById("inputContainer");
+    var errorElement = document.getElementById("error");
 
     numFieldsSelect.addEventListener("change", function () {
         var selectedValue = numFieldsSelect.value;
@@ -11,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
     dynamicForm.addEventListener("submit", function (event) {
         if (!validateForm()) {
             event.preventDefault(); // Prevent form submission
+            errorElement.textContent = "Please fill in all required fields."; // Display error message
+        } else {
+            errorElement.textContent = ""; // Clear the error message if the form is valid
+
+
         }
     });
 
